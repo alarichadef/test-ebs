@@ -24,3 +24,7 @@ app.get("/s", function(req, res) {
             res.status(500).send(JSON.stringify(err));
         });
 });
+
+app.get('/', (req, res) => {
+    return res.status(200).send(JSON.stringify({'poulet': 'alaric'}))
+});
