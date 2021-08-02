@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+    postgres:
+        image: postgres
+        container_name: postgres
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: pg_development
+        ports: 
+            - '5432:5432'
+        volumes:
+            - ./pgData:/var/lib/psotgresql/data
+    app:
+        environment:
+            - NODE_ENV=development
+        depends_on:
+            - "postgres"
+        build: .
+        ports:
+            - "1234:1234"
+        env_file: ./.docker.env
+        entrypoint: ["/bin/sh", "./config/entrypoint.sh"]
+        volumes:
+            - .:/code
+            - /code/node_modules
