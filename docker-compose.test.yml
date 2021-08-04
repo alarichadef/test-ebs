@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+    postgres_test:
+        image: postgres
+        container_name: postgres_test
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres_test
+        ports:
+            - '5432:5432'
+        volumes:
+            - ./pgData-test:/var/lib/psotgresql/data/test
+    app:
+        depends_on:
+            - "postgres_test"
+        build: .
+        ports:
+            - "1234:1234"
+        env_file: ./.docker.env
+        entrypoint: ["/bin/sh", "./config/entrypoint-test.sh"]
+        environment:
+            NODE_ENV: development
+            RDS_DB_NAME: postgres_test
+            RDS_PORT: 5432
+        volumes:
+            - .:/code
+            - /code/node_modules
