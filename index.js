@@ -1,5 +1,5 @@
 var express = require('express');
-const models = require("./models");
+const models = require('./models');
 
 const app = express();
 
@@ -14,17 +14,17 @@ app.listen(PORT, (err) => {
     return console.log(`Server listening on ${PORT}`);
 });
 
-app.get("/s", function(req, res) {
+app.get('/s', function (req, res) {
     console.warn('db =>', models.MyUser);
     models.MyUser.findAll()
-        .then( persons => {
+        .then((persons) => {
             res.status(200).send(JSON.stringify(persons));
         })
-        .catch( err => {
+        .catch((err) => {
             res.status(500).send(JSON.stringify(err));
         });
 });
 
 app.get('/', (req, res) => {
-    return res.status(200).send(JSON.stringify({'poulet': 'alaric'}))
+    return res.status(200).send(JSON.stringify({ poulet: 'alaric' }));
 });

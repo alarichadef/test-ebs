@@ -23,6 +23,7 @@ services:
             NODE_ENV: development
             RDS_DB_NAME: postgres_test
             RDS_PORT: 5432
+            RDS_HOSTNAME: postgres_test
         volumes:
             - .:/code
             - /code/node_modules

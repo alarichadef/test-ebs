@@ -22,6 +22,7 @@ services:
         environment: 
             RDS_DB_NAME: postgres
             RDS_PORT: 5431
+            RDS_HOSTNAME: postgres
         entrypoint: ["/bin/sh", "./config/entrypoint.sh"]
         volumes:
             - .:/code
