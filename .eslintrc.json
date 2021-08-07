@@ -1,0 +1,29 @@
+{
+    "plugins": ["prettier"],
+    "env": {
+        "browser": false,
+        "node": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "globals": {
+        "it": "writable",
+        "describe": "writable",
+        "before": "writable",
+        "after": "writable",
+        "beforeEach": "writable",
+        "afterEach": "writable"
+    },
+    "rules": {
+        "camelcase": 0,
+        "prettier/prettier": "error",
+        "no-mixed-spaces-and-tabs": [2, "smart-tabs"]
+    }
+}
